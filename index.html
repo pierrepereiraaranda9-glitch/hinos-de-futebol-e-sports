@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hinos de Futebol e Sports</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f1f1;
+            color: #222;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            padding: 25px 15px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        header p {
+            margin: 8px 0 0;
+            color: #ccc;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .pesquisa {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        .titulo {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .hino {
+            background: white;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .escudo {
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
+        }
+
+        .informacoes {
+            flex: 1;
+        }
+
+        .informacoes h2 {
+            margin: 0 0 10px;
+            font-size: 19px;
+        }
+
+        audio {
+            width: 100%;
+        }
+
+        .baixar {
+            display: inline-block;
+            margin-top: 10px;
+            background: #111;
+            color: white;
+            padding: 9px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .baixar:hover {
+            background: #333;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+        }
+
+        @media (max-width: 600px) {
+            .hino {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .escudo {
+                width: 90px;
+                height: 90px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>⚽ Hinos de Futebol e Sports</h1>
+    <p>Ouça e baixe hinos de futebol</p>
+</header>
+
+<div class="container">
+
+    <input
+        class="pesquisa"
+        type="text"
+        id="pesquisa"
+        placeholder="🔎 Pesquisar hino ou clube..."
+        onkeyup="pesquisarHinos()"
+    >
+
+    <h2 class="titulo">🎵 Hinos Recentes</h2>
+
+    <div class="hino">
+        <img class="escudo" src="escudo.png" alt="Escudo do clube">
+
+        <div class="informacoes">
+            <h2>Hino do Club Athletico Paulistano</h2>
+
+            <audio controls>
+                <source src="hino.mp3" type="audio/mpeg">
+                Seu navegador não suporta áudio.
+            </audio>
+
+            <a class="baixar" href="hino.mp3" download>
+                ⬇️ Baixar Hino
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    Hinos de Futebol e Sports © 2026
+</footer>
+
+<script>
+function pesquisarHinos() {
+    let pesquisa = document
+        .getElementById("pesquisa")
+        .value
+        .toLowerCase();
+
+    let hinos = document.querySelectorAll(".hino");
+
+    hinos.forEach(function(hino) {
+        let texto = hino.innerText.toLowerCase();
+
+        if (texto.includes(pesquisa)) {
+            hino.style.display = "flex";
+        } else {
+            hino.style.display = "none";
+        }
+    });
+}
+</script>
+
+</body>
+</html>
